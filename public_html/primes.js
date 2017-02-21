@@ -6,11 +6,10 @@
 
 
 
-function displayPrimesDivideUpToRoot(){//1,000,000 primes (largest 15,485,863), 13.384 seconds without printing
+function displayPrimesDivideUpToRoot(n){//1,000,000 primes (largest 15,485,863), 13.384 seconds without printing
 	
 	var start = new Date().getTime();
 	
-	var n = document.getElementById("inField").value;
 	var limit; 
 	var nextToCheck = 1;
 	var allPrimes = [];
@@ -32,16 +31,27 @@ function displayPrimesDivideUpToRoot(){//1,000,000 primes (largest 15,485,863), 
 	
 	console.log(allPrimes[allPrimes.length-1]);
 	console.log("time ms:"+((new Date().getTime())-start));
+        return allPrimes;
 	
 };
 
+function upToRoot(){
+    
+    var n = parseInt(document.getElementById("inField").value);
+    displayPrimesDivideUpToRoot(n);
+    
+}
 
 
-function sieveOfEratosphene(range, n){
+
+
+function sieveOfEratosphene(n){
 	
+        var range= 200000;//must depend on n or MAKE IT NEATER WITHOUT THIS SHIT. no potencial jest
         var start = new Date().getTime();
-        //find all primes in range
         
+        
+        //find all primes in range
 	var foundPrimes = [];
 	var allNumbers = [];
        
@@ -55,27 +65,29 @@ function sieveOfEratosphene(range, n){
 	searchInFirstRange:
 	while(true){
 		while(allNumbers[currNewPrimeIndex]===0){
-		
 			currNewPrimeIndex++;
 			if (currNewPrimeIndex===allNumbers.length){
 				break searchInFirstRange;
 			}
 		}
                 
-		nextIndex = currNewPrimeIndex+allNumbers[currNewPrimeIndex];
 		foundPrimes.push(allNumbers[currNewPrimeIndex]);
                 if (foundPrimes.length===n){
                     console.log(foundPrimes[foundPrimes.length-1]);
                     console.log("time ms:"+(( new Date().getTime())-start));
                     return foundPrimes;
                 }
+                
+                
+                //if k is next prime, start crossing out with k*k ([k+k ... k*k-k] already crossed out)
+                nextIndex = currNewPrimeIndex+Math.pow(allNumbers[currNewPrimeIndex],2)-allNumbers[currNewPrimeIndex];
 		while (nextIndex<allNumbers.length){
 			allNumbers[nextIndex]=0;
 			nextIndex+=allNumbers[currNewPrimeIndex];	
 		}
 		allNumbers[currNewPrimeIndex] =0;
                 
-                //console.log(allNumbers);
+                
 	}
         
         
@@ -97,8 +109,14 @@ function sieveOfEratosphene(range, n){
 			ind++;
 		}
 		
+                
+                var primeLimit = Math.floor(Math.sqrt(max-1));
+                
 		for (var j=0;j<foundPrimes.length;j++){
-		
+                        if (foundPrimes[j]>primeLimit){
+                            break;
+                        }
+                    
 			var nextInd = Math.ceil(min/foundPrimes[j])*foundPrimes[j]- min;
 			while(nextInd<range){
 				nextRangeNumbers[nextInd] =0;
@@ -126,15 +144,17 @@ function sieveOfEratosphene(range, n){
 }
 
 
-function displayPrimesSieveErato(){//1,000,000 6708/7156ms delld620 
+function displayPrimesSieveErato(){
 
 	
 
 	var n = parseInt(document.getElementById("inField2").value);
-	var range= 50000;//must depend on n or MAKE IT NEATER WITHOUT THIS SHIT. no potencial jest
+	
+
+      
 
 
-        var primesToDisplay = sieveOfEratosphene(range, n);
+        var primesToDisplay = sieveOfEratosphene( n);
 
         
 
