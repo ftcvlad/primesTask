@@ -12,17 +12,17 @@ In order to run unit tests configure a test server (different for different IDEs
 
 2. Sieve of Eratosthenes. One could estimate the range which contains nth prime using  p(n) < n*(log n + log (log n)), where p(n) is an nth prime.
 	Then one could do a sieve over that range. However:
-* This proved to be slower than the current algorithm 	(probably because estimate is only approximate,
+ * This proved to be slower than the current algorithm 	(probably because estimate is only approximate,
 		and the algorithm ends up crossing out numbers beyond the nth prime)
-* It requires more memory to store all numbers being sieved.
+ * It requires more memory to store all numbers being sieved.
 
 3. Segmented sieve of Eratosthenes (the final solution). The algorithm has 2 stages:
-* find all primes in a certain range (200000)
-* use these primes to cross out numbers in next ranges of the same size
+ * find all primes in a certain range (200000)
+ * use these primes to cross out numbers in next ranges of the same size
 	
-A few adjustments make it more efficient:
-* When doing sieve if a prime i is found, next i's multiple to check is i*i (i*2..i*(i-1) have already been crossed out)
-* In the 2nd part of the algorithm, when it crosses out multiples of primes in some range, it is only worth to try 
+ A few adjustments make it more efficient:
+ * When doing sieve if a prime i is found, next i's multiple to check is ``i*i (i*2..i*(i-1)`` have already been crossed out)
+ * In the 2nd part of the algorithm, when it crosses out multiples of primes in some range, it is only worth to try 
 (obtained) primes up until square root of the largest number in the range.
 
 This proved to be the fastest algorithm I have done. On my low-performant PC it can find 10 million primes in 4 seconds 	
