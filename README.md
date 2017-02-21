@@ -6,19 +6,19 @@ All required files/libraries are in the repository. Double clicking index.html s
 In order to run unit tests configure a test server (different for different IDEs) and set jsTestDriver.conf file as a configuration file
 
 # What have I done
-1) A simple algorithm dividing all numbers up until sqrt(i) until n primes found. 
+1. A simple algorithm dividing all numbers up until sqrt(i) until n primes found. 
 	Used to test correctness of other algorithms (and for speed reference) 
 
 
-2) Sieve of Eratosthenes. One could estimate the range which contains nth prime using  p(n) < n*(log n + log (log n)), where p(n) is an nth prime.
+2. Sieve of Eratosthenes. One could estimate the range which contains nth prime using  p(n) < n*(log n + log (log n)), where p(n) is an nth prime.
 	Then one could do a sieve over that range. However:
-	* This proved to be slower than the current algorithm 	(probably because estimate is only approximate,
+* This proved to be slower than the current algorithm 	(probably because estimate is only approximate,
 		and the algorithm ends up crossing out numbers beyond the nth prime)
-	* It requires more memory to store all numbers being sieved.
+* It requires more memory to store all numbers being sieved.
 
-3) Segmented sieve of Eratosthenes (the final solution). The algorithm has 2 stages:
-	* find all primes in a certain range (200000)
-	* use these primes to cross out numbers in next ranges of the same size
+3. Segmented sieve of Eratosthenes (the final solution). The algorithm has 2 stages:
+* find all primes in a certain range (200000)
+* use these primes to cross out numbers in next ranges of the same size
 	
 A few adjustments make it more efficient:
 * When doing sieve if a prime i is found, next i's multiple to check is i*i (i*2..i*(i-1) have already been crossed out)
