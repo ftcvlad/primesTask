@@ -5,7 +5,7 @@
  */
 
 
-//test algorithm
+//testing algorithm
 function displayPrimesDivideUpToRoot(n){
 	
 	var limit; 
@@ -61,8 +61,8 @@ function sieveOfEratosphene(n){
                 
 		foundPrimes.push(allNumbers[currNewPrimeIndex]);
                 if (foundPrimes.length===n){
-                    console.log(foundPrimes[foundPrimes.length-1]);
-                    console.log("time ms:"+(( new Date().getTime())-start));
+                    
+                    $("#messageDiv").text("Primes found in (ms):"+(( new Date().getTime())-start));
                     return foundPrimes;
                 }
                 
@@ -118,8 +118,8 @@ function sieveOfEratosphene(n){
 
 				if (foundPrimes.length ===n){
 				
-                                        console.log(foundPrimes[foundPrimes.length-1]);
-                                        console.log("time ms:"+(( new Date().getTime())-start));
+                                        $("#messageDiv").text("Primes found in (ms):"+(( new Date().getTime())-start));
+                                      
 					return foundPrimes;
 				}
 			}
@@ -144,8 +144,50 @@ function displayPrimesSieveErato(){
             alert("wrong input");
         }
 
+        if ($("#printCheck").is(":checked")){
+            printOutput(primesToDisplay);
+        }
+
+        
         
 
 }
 
-
+function printOutput(primes){
+    
+    
+    var max = primes[primes.length-1];
+    
+    //print first row
+    var nextRow=Array((max+"").length+1).join("_")+":   "; 
+    for (var j=0;j<primes.length;j++){
+         nextRow+=Array((max*primes[j]+"").length - (primes[j]+"").length + 1).join("_")+primes[j]+" | ";   
+    }
+    $("#tableHolder").append("<div>"+nextRow+"</div>");
+    $("#tableHolder").append("<br/>");
+    
+    
+    
+    //print rest of the rows
+    for (var i=0;i<primes.length;i++){
+        
+        
+        nextRow =  Array((max+"").length - (primes[i]+"").length+1).join("_")+primes[i]+":   ";
+       
+        
+        
+        for (var j=0;j<primes.length;j++){
+            var targetLength = (primes[j]*max+"").length;
+            var multipleLength = (primes[i]*primes[j]+"").length;
+            nextRow+= Array(targetLength-multipleLength+1).join("_")+ primes[i]*primes[j]+" | ";
+        }
+        
+        $("#tableHolder").append("<div>"+nextRow+"</div>");
+        
+        
+        
+    }
+    
+    
+    
+}

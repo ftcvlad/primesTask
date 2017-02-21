@@ -5,7 +5,7 @@
  */
 
 
-describe("Sieve of Eratosthenes correctness", function() {
+describe("segmented sieve of Eratosthenes correctness", function() {
   
     
     it("Checks if first 10 primes produced by SieveOfEratosthenes are correct", function() {
@@ -39,7 +39,7 @@ describe("Sieve of Eratosthenes correctness", function() {
       
   });
   
-  
+  //N=0 and non-numeric/non-integer input is irrelevant for the task and is rejected
  
   
   

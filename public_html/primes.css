@@ -1,0 +1,33 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21-Feb-2017, 21:04:27
+    Author     : Vlad
+*/
+
+#tableHolder{
+    white-space: nowrap;
+    font-family:monospace
+}
+
+button{
+    width:200px;
+    height:30px;
+}
+
+#tableHolder div{
+    display: table-row;
+}
+
+#tableHolder div:nth-child(even){
+    background: #eaeaea;
+}
+
+#messageDiv{
+    height:30px;
+    display: table-cell;
+    vertical-align: bottom;
+}

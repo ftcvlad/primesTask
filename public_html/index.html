@@ -10,13 +10,34 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="primes.js"></script>
+        <link rel="stylesheet" href="primes.css">
+        
         
     </head>
     <body>
 
-        <input id="inField2" type="number">
-        <button onClick="displayPrimesSieveErato()" style="width:200px; height:20px;">generate n primes (sieve)</button>
+        <div>
+            <input id="inField2" type="number">
+            <button onClick="displayPrimesSieveErato()" >generate n primes (sieve)</button>
 
+            <label for="printCheck">Print result? </label>
+            <input id="printCheck" name="printCheck" type="checkbox">
+        </div>
+       
+       
+
+        <br>
+        <div id="messageDiv"></div>
+        <br>
+        <hr>
+        <br>
+        <br>
+        
+        <div id="tableHolder" style="">
+            
+        </div>
+        
     </body>
 </html>
