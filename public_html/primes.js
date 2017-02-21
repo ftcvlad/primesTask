@@ -35,7 +35,7 @@ function displayPrimesDivideUpToRoot(n){
 //actual algorithm
 function sieveOfEratosphene(n){
 	
-        var range= 200000;//must depend on n or MAKE IT NEATER WITHOUT THIS SHIT. no potencial jest
+        var range= 200000;
         var start = new Date().getTime();
         
         
@@ -119,7 +119,7 @@ function sieveOfEratosphene(n){
 				if (foundPrimes.length ===n){
 				
                                         $("#messageDiv").text("Primes found in (ms):"+(( new Date().getTime())-start));
-                                      
+                                        console.log(foundPrimes[foundPrimes.length-1]);
 					return foundPrimes;
 				}
 			}
@@ -134,6 +134,7 @@ function sieveOfEratosphene(n){
 
 function displayPrimesSieveErato(){
 
+        $("#tableHolder").html('');
         var nStr = document.getElementById("inField2").value;
 
 	if ((nStr).match(/^[1-9]\d*(\d+)?$/)){//integer not starting with 0
