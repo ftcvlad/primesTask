@@ -35,9 +35,9 @@ This proved to be the fastest algorithm I have done. On my low-performant PC it 
 	
 3) I could study and employ one of the more performant algorithms such as Sieve of Atkin 
 	(one of the libraries I have seen can generate 1 billion of primes in 8 seconds on Pentium 2, so, there is certainly room for improvement)
-4) design is minimalistic as well
+
  
-#### Overall, I was aiming at a reasonably efficient algorithm (that would produce 1 million primes quickly as mentioned in the requirements), but not highly efficient algorithm. 
+#### Overall, I was aiming at a reasonably efficient algorithm (that would produce 1 million primes quickly as mentioned in the requirements), but not a highly efficient algorithm. 
 	
 	
 	

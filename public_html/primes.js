@@ -62,7 +62,7 @@ function sieveOfEratosphene(n){
 		foundPrimes.push(allNumbers[currNewPrimeIndex]);
                 if (foundPrimes.length===n){
                     
-                    $("#messageDiv").text("Primes found in (ms):"+(( new Date().getTime())-start));
+                   
                     return foundPrimes;
                 }
                 
@@ -118,7 +118,7 @@ function sieveOfEratosphene(n){
 
 				if (foundPrimes.length ===n){
 				
-                                        $("#messageDiv").text("Primes found in (ms):"+(( new Date().getTime())-start));
+                                        
 					return foundPrimes;
 				}
 			}
@@ -139,6 +139,7 @@ function displayPrimesSieveErato(){
 	if ((nStr).match(/^[1-9]\d*(\d+)?$/)){//integer not starting with 0
             var n = parseInt(nStr);
             var primesToDisplay = sieveOfEratosphene( n);
+            $("#messageDiv").text("Primes found in (ms):"+(( new Date().getTime())-start));
         }
         else{
             alert("wrong input");
