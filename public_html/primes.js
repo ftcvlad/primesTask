@@ -119,7 +119,6 @@ function sieveOfEratosphene(n){
 				if (foundPrimes.length ===n){
 				
                                         $("#messageDiv").text("Primes found in (ms):"+(( new Date().getTime())-start));
-                                        console.log(foundPrimes[foundPrimes.length-1]);
 					return foundPrimes;
 				}
 			}
