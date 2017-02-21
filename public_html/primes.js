@@ -37,6 +37,107 @@ function displayPrimesDivideUpToRoot(){//1,000,000 primes (largest 15,485,863), 
 
 
 
+function sieveOfEratosphene(range, n){
+	
+        var start = new Date().getTime();
+        //find all primes in range
+        
+	var foundPrimes = [];
+	var allNumbers = [];
+       
+	for (i=2;i<(2+range);i++){
+		allNumbers.push(i);
+	}
+	
+	var currNewPrimeIndex = 0;
+	var nextIndex;
+	
+	searchInFirstRange:
+	while(true){
+		while(allNumbers[currNewPrimeIndex]===0){
+		
+			currNewPrimeIndex++;
+			if (currNewPrimeIndex===allNumbers.length){
+				break searchInFirstRange;
+			}
+		}
+                
+		nextIndex = currNewPrimeIndex+allNumbers[currNewPrimeIndex];
+		foundPrimes.push(allNumbers[currNewPrimeIndex]);
+                if (foundPrimes.length===n){
+                    console.log(foundPrimes[foundPrimes.length-1]);
+                    console.log("time ms:"+(( new Date().getTime())-start));
+                    return foundPrimes;
+                }
+		while (nextIndex<allNumbers.length){
+			allNumbers[nextIndex]=0;
+			nextIndex+=allNumbers[currNewPrimeIndex];	
+		}
+		allNumbers[currNewPrimeIndex] =0;
+                
+                //console.log(allNumbers);
+	}
+        
+        
+        //if in the first range not enough primes, take next range. Use primes that are already found to cross out
+        //numbers in the next range
+        var min;
+	var max = 2+range;//[min, max)
 
+	var nextRangeNumbers = [];
+	
+	
+	while (true){
+		min=max;
+		max= min+range;
+		
+		var ind = 0;
+		for (var i=min;i<max;i++){
+			nextRangeNumbers[ind] = i;
+			ind++;
+		}
+		
+		for (var j=0;j<foundPrimes.length;j++){
+		
+			var nextInd = Math.ceil(min/foundPrimes[j])*foundPrimes[j]- min;
+			while(nextInd<range){
+				nextRangeNumbers[nextInd] =0;
+				nextInd+=foundPrimes[j];
+			}
+		}
+		
+		for (j=0;j<nextRangeNumbers.length;j++){
+			if (nextRangeNumbers[j]!==0){
+				foundPrimes.push(nextRangeNumbers[j]);
+
+				if (foundPrimes.length ===n){
+				
+                                        console.log(foundPrimes[foundPrimes.length-1]);
+                                        console.log("time ms:"+(( new Date().getTime())-start));
+					return foundPrimes;
+				}
+			}
+		}
+		
+		
+		
+	}
+	    
+}
+
+
+function displayPrimesSieveErato(){//1,000,000 6708/7156ms delld620 
+
+	
+
+	var n = parseInt(document.getElementById("inField2").value);
+	var range= 50000;//must depend on n or MAKE IT NEATER WITHOUT THIS SHIT. no potencial jest
+
+
+        var primesToDisplay = sieveOfEratosphene(range, n);
+
+        
+
+}
 
 
