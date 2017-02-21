@@ -5,10 +5,8 @@
  */
 
 
-
-function displayPrimesDivideUpToRoot(n){//1,000,000 primes (largest 15,485,863), 13.384 seconds without printing
-	
-	var start = new Date().getTime();
+//test algorithm
+function displayPrimesDivideUpToRoot(n){
 	
 	var limit; 
 	var nextToCheck = 1;
@@ -29,22 +27,12 @@ function displayPrimesDivideUpToRoot(n){//1,000,000 primes (largest 15,485,863),
 		allPrimes.push(nextToCheck);
 	}
 	
-	console.log(allPrimes[allPrimes.length-1]);
-	console.log("time ms:"+((new Date().getTime())-start));
         return allPrimes;
 	
 };
 
-function upToRoot(){
-    
-    var n = parseInt(document.getElementById("inField").value);
-    displayPrimesDivideUpToRoot(n);
-    
-}
 
-
-
-
+//actual algorithm
 function sieveOfEratosphene(n){
 	
         var range= 200000;//must depend on n or MAKE IT NEATER WITHOUT THIS SHIT. no potencial jest
@@ -146,15 +134,15 @@ function sieveOfEratosphene(n){
 
 function displayPrimesSieveErato(){
 
-	
+        var nStr = document.getElementById("inField2").value;
 
-	var n = parseInt(document.getElementById("inField2").value);
-	
-
-      
-
-
-        var primesToDisplay = sieveOfEratosphene( n);
+	if ((nStr).match(/^[1-9]\d*(\d+)?$/)){//integer not starting with 0
+            var n = parseInt(nStr);
+            var primesToDisplay = sieveOfEratosphene( n);
+        }
+        else{
+            alert("wrong input");
+        }
 
         
 
