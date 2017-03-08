@@ -36,7 +36,7 @@ function displayPrimesDivideUpToRoot(n){
 function sieveOfEratosphene(n){
 	
         var range= 200000;
-        var start = new Date().getTime();
+        
         
         
         //find all primes in range
@@ -138,6 +138,7 @@ function displayPrimesSieveErato(){
 
 	if ((nStr).match(/^[1-9]\d*(\d+)?$/)){//integer not starting with 0
             var n = parseInt(nStr);
+            var start = new Date().getTime();
             var primesToDisplay = sieveOfEratosphene( n);
             $("#messageDiv").text("Primes found in (ms):"+(( new Date().getTime())-start));
         }
